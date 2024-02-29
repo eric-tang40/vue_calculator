@@ -10,9 +10,43 @@
 
 <body>
     <div id="app">
-
+        <button v-on:click="addValue">undo</button> 
+        <br>
+        <br>
+        <br>
+        <input type="text" id="my_value" v-model="field" />
+        <br>
+        <button v-on:click="">x</button> 
+        <button v-on:click="">(</button> 
+        <button v-on:click="">)</button> 
+        <button v-on:click="addValue('mod')">mod</button> 
+        <button v-on:click="addValue('π')">π</button> 
+        <br>
+        <button v-on:click="addValue(7)">7</button> 
+        <button v-on:click="addValue(8)">8</button> 
+        <button v-on:click="addValue(9)">9</button> 
+        <button class="operator" id="divison_button" v-on:click="addValue('÷')">÷</button> 
+        <button class="operator" id="sqrt_button" v-on:click="addValue('√')">√</button> 
+        <br>
+        <button v-on:click="addValue(4)">4</button> 
+        <button v-on:click="addValue(5)">5</button> 
+        <button v-on:click="addValue(6)">6</button> 
+        <button class="operator" id="mult_button" v-on:click="addValue('*')">*</button> 
+        <button v-on:click="">x2</button> 
+        <br>
+        <button v-on:click="addValue(1)">1</button> 
+        <button v-on:click="addValue(2)">2</button> 
+        <button v-on:click="addValue(3)">3</button> 
+        <button class="operator" v-on:click="addValue('-')">-</button> 
+        <button class="operator" v-on:click="calculate()">=</button> 
+        <br>
+        <button v-on:click="addValue(0)">0</button> 
+        <button v-on:click="addValue('.')">.</button> 
+        <button class="operator" v-on:click="addValue('%')">%</button> 
+        <button class="operator" v-on:click="addValue('+')">+</button>
+       
     </div>
-    
+
     <script type="module" src="our_app.js"></script>
 </body>
 
