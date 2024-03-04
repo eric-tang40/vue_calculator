@@ -17,9 +17,9 @@
         <input type="text" id="my_value" v-model="display" />
         <br>
         <button v-on:click="clearField()">clear</button> 
-        <button v-on:click="">(</button> 
-        <button v-on:click="">)</button> 
-        <button v-on:click="addValue('mod')">mod</button> 
+        <button v-on:click="addValue('(')">(</button> 
+        <button v-on:click="addValue(')')">)</button> 
+        <button class="operator" v-on:click="addValue('mod')">mod</button> 
         <button v-on:click="addValue('π')">π</button> 
         <br>
         <button v-on:click="addValue(7)">7</button> 
@@ -32,7 +32,7 @@
         <button v-on:click="addValue(5)">5</button> 
         <button v-on:click="addValue(6)">6</button> 
         <button class="operator" id="mult_button" v-on:click="addValue('*')">*</button> 
-        <button v-on:click="addValue('^')">^</button> 
+        <button class="operator" v-on:click="addValue('^')">^</button> 
         <br>
         <button v-on:click="addValue(1)">1</button> 
         <button v-on:click="addValue(2)">2</button> 
