@@ -28,17 +28,35 @@ createApp({
             else if(x == '^') {
                 this.backend += '**';
             }
+            else if(x == '('){
+                this.backend += '(';
+            }
+            else if(x == ')'){
+                this.backend += ')';
+            }
+            else if(x == '√'){
+                this.backend += 'Math.sqrt('
+                
+            }
             else {
                 this.backend += x;
             }
         },
         calculate() {
             try {
+                if (!this.backend.includes('Math.sqrt()')){
+                    for(let i = 0; i < this.backend.length; i++){
+                        if (this.backend.substring(i, i+10) === ('Math.sqrt(')){
+                            this.backend = this.backend + ')';
+                        }
+                    }
+                }
                 this.result = eval('(' + this.backend + ')').toString(); 
                 // eval() command is able to calculate certain strings 
             } 
             catch (error) {
-              this.result = "Error. Not a proper mathematical function.";
+                console.log(this.backend)
+                this.result = "Error. Not a proper mathematical function.";
             }
         },
         clearField() {

@@ -1,0 +1,36 @@
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+#app {
+    background-color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+input {
+    width: 100%;
+    margin: 10px -20px ;
+    padding: 10px;
+    font-size: 1.5em;
+    text-align: right;
+}
+
+button {
+    padding: 10px 15px;
+    font-size: 1.2em;
+    margin: 10px;
+    cursor: pointer;
+}
+
+button.operator {
+    background-color: #ff9900;
+    color: #fff;
+}
+
+button.operator:hover {
+    background-color: #e68a00;
+}
+
