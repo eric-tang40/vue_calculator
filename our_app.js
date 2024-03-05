@@ -47,6 +47,7 @@ createApp({
             // }
         },
         evalDisplay(){
+            this.backend = "";
             for(let i = 0; i < this.display.length; i++){
                 const x=this.display[i]
                 const y=this.display[i+1]
@@ -96,12 +97,12 @@ createApp({
                 //         }
                 //     }
                 // }
-                this.history.push(this.display)
+
+                // this.history.push(this.display)
                 console.log(this.history[0])
                 this.evalDisplay();
                 this.result = eval('(' + this.backend + ')').toString(); 
-                // eval() command is able to calculate certain strings 
-
+                this.history.push(this.display + " = " + this.result)
             } 
             catch (error) {
                 console.log(this.backend)

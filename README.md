@@ -3,3 +3,5 @@
 Collaborators: Eric Tang, Calvin Pun
 
 Worklog: https://docs.google.com/document/d/11JB9ulk-6i4MAsQlilSw9-VbpMPrq9n-cPl3fKcNd6g/edit?usp=sharing
+
+issues: PI requires you to put an operand, does not work if you put "2pi". sqrt still not fully working. must implement sqrt code for every operand. 

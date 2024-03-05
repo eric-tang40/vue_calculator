@@ -14,6 +14,7 @@
         <br>
         <br>
         <br>
+        <div v-for="(item, index) in history" :key="index">{{ item }}</div>
         <input type="text" id="my_value" v-model="display" />
         <br>
         <button v-on:click="clearField()">clear</button> 
@@ -45,7 +46,9 @@
         <button class="operator" v-on:click="addValue('%')">%</button> 
         <button class="operator" v-on:click="addValue('+')">+</button>
 
-        <p>To Debug: {{ backend }}</p>
+        <p>To Debug display: {{ display }}</p>
+        <p>To Debug backend: {{ backend }}</p>
+        <p>To Debug history: {{ history }}</p>
         <p>Answer: {{ result }}</p>
        
     </div>
