@@ -6,6 +6,7 @@ createApp({
             display: "", // what the user will see in the input field
             backend: "", // what we use to calculate
             result: "",
+            history: [],
         }; 
     },
     watch:{ 
@@ -82,6 +83,7 @@ createApp({
             if (this.display.includes("mod")){
                 this.backend = this.display.replace("mod",'%')
             }
+            console.log(this.backend)
         },
         calculate() {
             try {
@@ -94,14 +96,20 @@ createApp({
                 //         }
                 //     }
                 // }
+                this.history.push(this.display)
+                console.log(this.history[0])
                 this.evalDisplay();
                 this.result = eval('(' + this.backend + ')').toString(); 
                 // eval() command is able to calculate certain strings 
+
             } 
             catch (error) {
                 console.log(this.backend)
                 this.result = "Error. Not a proper mathematical function.";
             }
+        },
+        undo(){
+            this.display = this.display.substring(0, this.display.length-1)
         },
         clearField() {
             this.display = "";
