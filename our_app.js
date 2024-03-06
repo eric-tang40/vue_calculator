@@ -79,7 +79,7 @@ createApp({
                 const x=this.display[i]
                 // const y=this.display[i+1]
                 // const z=this.display[i+2]
-                if(x == "÷") { // various if statements to make sure there are no errors in evaluating 
+                if(x == "÷") { 
                     if(this.backend.includes("Math.sqrt(") && !this.backend.includes(")")){
                         this.backend += ')'
                     }
@@ -124,7 +124,7 @@ createApp({
                 //     }
                 // }
 
-                // this.history.push(this.display)
+                
                 this.evalDisplay();
                 this.result = eval('(' + this.backend + ')').toString(); 
                 this.previousResult = this.result;
@@ -139,7 +139,6 @@ createApp({
                     this.calculate();
                 }
                 else {
-                // this.result = "Error. Not a proper mathematical function.";
                     this.history.push("Error. Not a proper mathematical function.")
                 }
             }
