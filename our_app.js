@@ -17,6 +17,11 @@ createApp({
             if(newValue !== "") {
                 this.hasCalculated = false;
             }
+        },
+        result(newValue) {
+            if(newValue === "") {
+                this.hasCalculated = false;
+            }
         }
     },
     methods: {  
@@ -65,7 +70,9 @@ createApp({
         evalDisplay(){
             if(this.operators.includes(this.display[0]) && this.previousResult !== "") {
                 this.display = this.previousResult + this.display;
-                console.log(this.display);
+            }
+            if(this.display[0] === "m" && this.display[1] === "o" && this.display[2] === "d") {
+                this.display = this.previousResult + this.display;
             }
             this.backend = "";
             for(let i = 0; i < this.display.length; i++){
@@ -79,7 +86,7 @@ createApp({
                     this.backend += '/';
                 }
                 else if(x == "π") {
-                    this.backend += 'Math.PI';
+                    this.backend += '3.141592653589793';
                 }
                 else if(x == '%') {
                     this.backend += '/100';
@@ -126,8 +133,15 @@ createApp({
                 this.hasCalculated = true;
             } 
             catch (error) {
+                if(this.result != this.previousResult) {
+                    this.display = this.result;
+                    this.backend = this.result;
+                    this.calculate();
+                }
+                else {
                 // this.result = "Error. Not a proper mathematical function.";
-                this.history.push("Error. Not a proper mathematical function.")
+                    this.history.push("Error. Not a proper mathematical function.")
+                }
             }
         },
         undo(){
