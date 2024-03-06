@@ -15,7 +15,7 @@
         <br>
         <br>
         <div v-for="(item, index) in history" :key="index" class="history-style">{{ item }}</div>
-        <input type="text" id="my_value" :value="hasCalculated ? result : display" @input="updateInput" />
+        <input type="text" id="my_value" :value="hasCalculated ? result : display" @input="updateInput" @keyup.enter="calculate" />
         <br>
         <button v-on:click="clearField()">clear</button> 
         <button v-on:click="addValue('(')">(</button> 
