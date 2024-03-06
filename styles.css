@@ -10,6 +10,12 @@ body {
     text-align: center;
 }
 
+.history-style {
+    border: 1px solid #ccc;
+    padding: 10px;          
+    margin-bottom: 5px;      
+  }
+
 input {
     width: 100%;
     margin: 10px -20px ;
