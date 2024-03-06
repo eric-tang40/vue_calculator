@@ -85,6 +85,9 @@ createApp({
                     }
                     this.backend += '/';
                 }
+                else if((x == "π" && (this.operators.includes(this.display[i-1]) || this.operators.includes(this.display[i+1]))) || this.display == "π") {
+                    this.backend += '3.141592653589793';
+                }
                 else if(x == "π") {
                     this.backend += '*3.141592653589793';
                 }
