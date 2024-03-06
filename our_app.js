@@ -18,6 +18,8 @@ createApp({
                 this.hasCalculated = false;
             }
         },
+    },
+    computed: {
         result(newValue) {
             if(newValue === "") {
                 this.hasCalculated = false;
@@ -35,37 +37,6 @@ createApp({
         },
         addValue(x) {
             this.display += x;
-            // if(x == "÷") { // various if statements to make sure there are no errors in evaluating 
-            //     if(this.backend.includes("Math.sqrt(") && !this.backend.includes(")")){
-            //         this.backend += ')'
-            //     }
-            //     this.backend += '/';
-            // }
-            // else if(x == "π") {
-            //     this.backend += 'Math.PI';
-            // }
-            // else if(x == 'mod') {
-            //     this.backend += '%';
-            // }
-            // else if(x == '%') {
-            //     this.backend += '/100';
-            // }
-            // else if(x == '^') {
-            //     this.backend += '**';
-            // }
-            // else if(x == '('){
-            //     this.backend += '(';
-            // }
-            // else if(x == ')'){
-            //     this.backend += ')';
-            // }
-            // else if(x == '√'){
-            //     this.backend += 'Math.sqrt('
-                
-            // }
-            // else {
-            //     this.backend += x;
-            // }
         },
         evalDisplay(){
             if(this.operators.includes(this.display[0]) && this.previousResult !== "") {
@@ -76,9 +47,7 @@ createApp({
             }
             this.backend = "";
             for(let i = 0; i < this.display.length; i++){
-                const x=this.display[i]
-                // const y=this.display[i+1]
-                // const z=this.display[i+2]
+                const x=this.display[i];
                 if(x == "÷") { 
                     if(this.backend.includes("Math.sqrt(") && !this.backend.includes(")")){
                         this.backend += ')'
@@ -87,6 +56,24 @@ createApp({
                 }
                 else if((x == "π" && (this.operators.includes(this.display[i-1]) || this.operators.includes(this.display[i+1]))) || this.display == "π") {
                     this.backend += '3.141592653589793';
+                } 
+                else if(x=="*") {
+                    if(this.backend.includes("Math.sqrt(") && !this.backend.includes(")")){
+                        this.backend += ')'
+                    }
+                    this.backend += x;
+                }
+                else if(x=="+") {
+                    if(this.backend.includes("Math.sqrt(") && !this.backend.includes(")")){
+                        this.backend += ')'
+                    }
+                    this.backend += x;
+                }
+                else if(x=="-") {
+                    if(this.backend.includes("Math.sqrt(") && !this.backend.includes(")")){
+                        this.backend += ')'
+                    }
+                    this.backend += x;
                 }
                 else if(x == "π") {
                     this.backend += '*3.141592653589793';
@@ -104,30 +91,26 @@ createApp({
                     this.backend += ')';
                 }
                 else if(x == '√'){
+                    console.log(true);
+                    if(this.backend.includes("Math.sqrt(") && !this.backend.includes(")")){
+                        this.backend += ')'
+                    }
                     this.backend += 'Math.sqrt('
-                    
                 }
-                else {
+                else {               
                     this.backend += x;
                 }
             }
             if (this.display.includes("mod")){
-                this.backend = this.display.replace("mod",'%')
+                if(this.backend.includes("Math.sqrt(") && !this.backend.includes(")")){  
+                    this.backend = this.backend.replace("mod",'p%');
+                    this.backend = this.backend.replace("p",')');
+                    
+                }
             }
         },
         calculate() {
             try {
-
-                // if (!this.backend.includes('Math.sqrt()')){
-                //     for(let i = 0; i < this.backend.length; i++){
-                //         if (this.backend.substring(i, i+10) === ('Math.sqrt(')){
-                            
-                //             this.backend = this.backend + ')';
-                //         }
-                //     }
-                // }
-
-                
                 this.evalDisplay();
                 this.result = eval('(' + this.backend + ')').toString(); 
                 this.previousResult = this.result;
