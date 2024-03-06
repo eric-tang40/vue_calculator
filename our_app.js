@@ -86,7 +86,7 @@ createApp({
                     this.backend += '/';
                 }
                 else if(x == "π") {
-                    this.backend += '3.141592653589793';
+                    this.backend += '*3.141592653589793';
                 }
                 else if(x == '%') {
                     this.backend += '/100';
